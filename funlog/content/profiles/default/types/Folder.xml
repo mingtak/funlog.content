@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<object name="Folder" meta_type="Dexterity FTI">
+  <property name="filter_content_types">True</property>
+  <property name="allowed_content_types">
+    <element value="funlog.content.album" />
+    <element value="funlog.content.article" />
+  </property>
+</object>

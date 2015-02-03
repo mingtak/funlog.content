@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<rolemap>
+<!--  <roles>
+  </roles> -->
+  <permissions>
+
+    <permission name="plone.app.contenttypes: Add Document" acquire="False">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Contributor" />
+    </permission>
+
+    <permission name="plone.app.contenttypes: Add Event" acquire="False">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Contributor" />
+    </permission>
+
+    <permission name="plone.app.contenttypes: Add File" acquire="False">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Contributor" />
+    </permission>
+
+    <permission name="plone.app.contenttypes: Add Folder" acquire="False">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Contributor" />
+    </permission>
+
+    <permission name="plone.app.contenttypes: Add Link" acquire="False">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Contributor" />
+    </permission>
+
+    <permission name="plone.app.contenttypes: Add News Item" acquire="False">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Contributor" />
+    </permission>
+
+    <permission name="plone.app.contenttypes: Add Collection" acquire="False">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Contributor" />
+    </permission>
+
+    <permission name="funlog.content: Add Album" acquire="False">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Contributor" />
+      <role name="Owner" />
+    </permission>
+
+  </permissions>
+</rolemap>
