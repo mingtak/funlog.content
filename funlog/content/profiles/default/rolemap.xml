@@ -45,13 +45,21 @@
       <role name="Site Administrator" />
       <role name="Contributor" />
     </permission>
-
+<!--
     <permission name="funlog.content: Add Album" acquire="False">
       <role name="Manager" />
       <role name="Site Administrator" />
       <role name="Contributor" />
       <role name="Owner" />
     </permission>
+-->
+    <permission name="Funlog: Is Member" acquire="False">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Member" />
+    </permission>
+
+
 
   </permissions>
 </rolemap>

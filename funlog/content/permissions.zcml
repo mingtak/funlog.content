@@ -5,9 +5,15 @@
 
     <!-- Define new permissions -->
     
-    <permission
+<!--    <permission
         id="funlog.AddAlbum"
         title="funlog.content: Add Album"
+        />
+-->
+
+    <permission
+        id="funlog.isMember"
+        title="Funlog: Is Member"
         />
 
 </configure>

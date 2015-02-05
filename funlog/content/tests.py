@@ -52,6 +52,22 @@ def test_suite():
 
         # -*- extra stuff goes here -*-
 
+        # Integration tests for SiteFolder
+        ztc.ZopeDocFileSuite(
+            'SiteFolder.txt',
+            package='funlog.content',
+            optionflags = OPTION_FLAGS,
+            test_class=TestCase),
+
+
+        # Integration tests for Travel
+        ztc.ZopeDocFileSuite(
+            'Travel.txt',
+            package='funlog.content',
+            optionflags = OPTION_FLAGS,
+            test_class=TestCase),
+
+
         # Integration tests for Article
         ztc.ZopeDocFileSuite(
             'Article.txt',

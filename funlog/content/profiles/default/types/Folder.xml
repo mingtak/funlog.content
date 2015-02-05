@@ -4,5 +4,6 @@
   <property name="allowed_content_types">
     <element value="funlog.content.album" />
     <element value="funlog.content.article" />
+    <element value="funlog.content.travel" />
   </property>
 </object>

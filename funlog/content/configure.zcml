@@ -35,8 +35,8 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+  <include file="permissions.zcml" />
   <include package=".browser" />
   <include package=".eventshandle" />
-  <include file="permissions.zcml" />
 
 </configure>

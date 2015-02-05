@@ -9,5 +9,53 @@
       handler=".eventshandle.checkRoles"
   />
 
+  <subscriber
+      for="plone.app.contenttypes.interfaces.IFolder
+           zope.lifecycleevent.interfaces.IObjectCreatedEvent"
+      handler=".eventshandle.excludeFromNav_True"
+  />
+
+  <subscriber
+      for="plone.app.contenttypes.interfaces.IImage
+           zope.lifecycleevent.interfaces.IObjectCreatedEvent"
+      handler=".eventshandle.excludeFromNav_True"
+  />
+
+  <subscriber
+      for="plone.app.contenttypes.interfaces.IDocument
+           zope.lifecycleevent.interfaces.IObjectCreatedEvent"
+      handler=".eventshandle.excludeFromNav_True"
+  />
+
+  <subscriber
+      for="..album.IAlbum
+           zope.lifecycleevent.interfaces.IObjectCreatedEvent"
+      handler=".eventshandle.excludeFromNav_True"
+  />
+
+  <subscriber
+      for="..article.IArticle
+           zope.lifecycleevent.interfaces.IObjectCreatedEvent"
+      handler=".eventshandle.excludeFromNav_True"
+  />
+
+  <subscriber
+      for="..travel.ITravel
+           zope.lifecycleevent.interfaces.IObjectCreatedEvent"
+      handler=".eventshandle.excludeFromNav_True"
+  />
+
+  <subscriber
+      for="..album.IAlbum
+           Products.DCWorkflow.interfaces.IBeforeTransitionEvent"
+      handler=".eventshandle.transitionState"
+  />
+
+  <subscriber
+      for="plone.app.contenttypes.interfaces.IFolder
+           Products.DCWorkflow.interfaces.IBeforeTransitionEvent"
+      handler=".eventshandle.transitionState"
+  />
+
 
 </configure>
