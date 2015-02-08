@@ -4,14 +4,38 @@
  <object name="user" meta_type="CMF Action Category">
 
 
-  <object name="My_Page" meta_type="CMF Action" i18n:domain="funlog.content">
-   <property name="title" i18n:translate="">My Page</property>
+  <object name="my_setup_page" meta_type="CMF Action" i18n:domain="funlog.content" insert-before="*">
+   <property name="title" i18n:translate="">My Setup Page</property>
    <property name="description" i18n:translate="">Blog Manager</property>
-   <property name="url_expr">string:${portal_url}/author</property>
+   <property name="url_expr">string:${portal_url}/main_setup</property>
    <property name="icon_expr"></property>
    <property name="available_expr"></property>
    <property name="permissions">
-    <element value="Portlets: Manage own portlets"/>
+    <element value="Funlog: Is Member"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+  <object name="my_funlog" meta_type="CMF Action" i18n:domain="funlog.content" insert-after="my_setup_page">
+   <property name="title" i18n:translate="">My Funlog</property>
+   <property name="description" i18n:translate="">Blog Manager</property>
+   <property name="url_expr">string:${portal_url}/to_my_funlog</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Funlog: Is Member"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+  <object name="content_manager" meta_type="CMF Action" i18n:domain="funlog.content" insert-after="my_funlog">
+   <property name="title" i18n:translate="">Content Manager</property>
+   <property name="description" i18n:translate="">Blog Manager</property>
+   <property name="url_expr">string:${portal_url}/content_manager</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Funlog: Is Member"/>
    </property>
    <property name="visible">True</property>
   </object>
@@ -25,10 +49,26 @@
    <property name="icon_expr"></property>
    <property name="available_expr">python:member is not None</property>
    <property name="permissions">
-    <element value="View"/>
+<!--    <element value="View"/> -->
+     <element value="Manage portal"/>
    </property>
    <property name="visible">True</property>
   </object>
+
+  <object name="dashboard" meta_type="CMF Action" i18n:domain="plone">
+   <property name="title" i18n:translate="">Dashboard</property>
+   <property name="description" i18n:translate=""></property>
+   <property name="url_expr">string:${portal_url}/dashboard</property>
+   <property name="link_target"></property>
+   <property name="icon_expr"></property>
+   <property name="available_expr">python:member is not None</property>
+   <property name="permissions">
+<!--    <element value="Portlets: Manage own portlets"/> -->
+    <element value="Manage portal"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
 
  </object>
 </object>

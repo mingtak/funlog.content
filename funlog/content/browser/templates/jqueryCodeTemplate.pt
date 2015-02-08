@@ -1,0 +1,1 @@
+<tal:script replace="structure view/scriptString" />

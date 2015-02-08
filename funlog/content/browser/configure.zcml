@@ -6,6 +6,36 @@
 
   <browser:page
     for="*"
+    name="main_setup"
+    permission="funlog.isMember"
+    class=".mainsetup.MainSetup" />
+
+  <browser:page
+    for="*"
+    name="to_my_funlog"
+    permission="funlog.isMember"
+    class=".tomyfunlog.ToMyFunlog" />
+
+  <browser:page
+    for="*"
+    name="content_manager"
+    permission="funlog.isMember"
+    class=".contentmanager.ContentManager" />
+
+  <browser:page
+    for="*"
+    name="content_transition"
+    permission="funlog.isMember"
+    class=".contentmanager.ContentTransition" />
+
+  <browser:page
+    for="*"
+    name="update_jquery"
+    permission="funlog.isMember"
+    class=".contentmanager.UpdateJquery" />
+
+  <browser:page
+    for="*"
     name="persional_info"
     permission="funlog.isMember"
     class=".persionalInfo.PersionalInfo" />
@@ -15,5 +45,12 @@
     name="set_persional_info"
     permission="funlog.isMember"
     class=".persionalInfo.SetPersionalInfo" />
+
+  <browser:page
+    for="*"
+    name="set_blog_info"
+    permission="funlog.isMember"
+    class=".persionalInfo.SetBlogInfo" />
+
 
 </configure>

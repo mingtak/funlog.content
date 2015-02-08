@@ -29,5 +29,15 @@ def checkRoles(event):
 
     with api.env.adopt_roles(['Manager']):
         folder = api.content.create(container=container, type="Folder", id=userId, title=username)
+        user.setMemberProperties(mapping={'blogId':userId})
 #        api.content.transition(obj=folder, transition='publish')
 #        folder.reindexObject(idxs=["review_state"])
+
+
+def moveContentToTop(obj, event):
+   """
+   Moves Items to the top of its folder
+   """
+   folder = obj.getParentNode()
+   if folder != None:
+       folder.moveObjectsToTop(obj.id)

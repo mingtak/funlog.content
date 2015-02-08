@@ -57,5 +57,19 @@
       handler=".eventshandle.transitionState"
   />
 
+<subscriber 
+   for="..album.IAlbum
+        zope.app.container.interfaces.IObjectAddedEvent"
+   handler=".eventshandle.moveContentToTop" />
+
+<subscriber
+   for="..article.IArticle
+        zope.app.container.interfaces.IObjectAddedEvent"
+   handler=".eventshandle.moveContentToTop" />
+
+<subscriber
+   for="..travel.ITravel
+        zope.app.container.interfaces.IObjectAddedEvent"
+   handler=".eventshandle.moveContentToTop" />
 
 </configure>

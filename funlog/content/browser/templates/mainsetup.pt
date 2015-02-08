@@ -15,11 +15,15 @@
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
 
+<ul>
+  <li>
+    <a tal:attributes="href string:${portal_url}/site/persional-information" i18n:translate="">Persional information setup</a>
+  </li>
+  <li>
+    <a tal:attributes="href string:${portal_url}/site/blog-setup" i18n:translate="">Blog setup</a>
+  </li>
+</ul>
 
-<tal:block tal:replace="structure here/site/persional-information/@@embedded"/>
-
-
-<div tal:content="structure view/request" />
 
   </metal:content-core>
 </metal:main>

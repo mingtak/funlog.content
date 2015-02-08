@@ -1,0 +1,72 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="funlog.content">
+<body>
+
+<tal:comment tal:condition="nothing">
+    This is a sample view template. It will not be used for rendering the
+    content unless activated by creation of a view class with a matching name.
+</tal:comment>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+
+
+<h2 i18n:translate="">Manage Album</h2>
+<ul>
+  <tal:repeat repeat="item view/albumBrain">
+    <li tal:define="review_state item/review_state;
+                    transitions python:view.getTransitions(review_state)"
+        tal:attributes="id item/UID"> 
+      <a tal:attributes="href item/getURL" tal:content="item/Title" />
+      <span>
+        <tal:state i18n:translate="">State:</tal:state>
+        <tal:state tal:content="item/review_state" />
+      </span>
+      <tal:transitions repeat="transition transitions">
+<form mothod="post"
+      tal:attributes="action string:${portal_url}/content_transition;
+                      id string:${item/UID}${transition}">
+<input type="text" name="type" style="display:none"
+       tal:attributes="value item/Type">
+<input type="text" name="uid" style="display:none"
+       tal:attributes="value item/UID">
+<input type="submit" name="transition"
+       tal:attributes="value transition;
+                       id string:${item/UID}${transition}input">
+</form>
+
+<tal:script content="structure python:view.jqueryCode(item, transition)"/>
+
+      </tal:transitions>
+
+    </li>
+
+
+
+  </tal:repeat>
+</ul>
+
+<tal:repeat repeat="item view/articleBrain">
+ <h2>
+   <a tal:attributes="href item/getURL" tal:content="item/Title" />
+ </h2>              
+</tal:repeat>
+
+
+<tal:repeat repeat="item view/travelBrain">
+ <h2>
+   <a tal:attributes="href item/getURL" tal:content="item/Title" />
+ </h2>              
+</tal:repeat>
+
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<tal:check condition="exists:view/transitions">
+      <a tal:attributes="href view/item/getURL" tal:content="view/item/Title" />
+      <span>
+        <tal:state i18n:translate="">State:</tal:state>
+        <tal:state tal:content="view/item/review_state" />
+      </span>
+
+
+<tal:transitions repeat="transition view/transitions">
+  <form mothod="post"
+        tal:attributes="action string:${view/portal/absolute_url}/content_transition;
+                        id string:${view/item/UID}${transition}">
+    <input type="text" name="type" style="display:none"
+           tal:attributes="value view/item/Type">
+    <input type="text" name="uid" style="display:none"
+           tal:attributes="value view/item/UID">
+    <input type="submit" name="transition"
+           tal:attributes="value transition;
+                           id string:${view/item/UID}${transition}input">
+  </form>
+
+<tal:script content="structure python:view.jqueryCode(view.item, transition)"/>
+</tal:transitions>
+</tal:check>
