@@ -16,4 +16,10 @@
         title="Funlog: Is Member"
         />
 
+    <permission
+        id="funlog.editTravel"
+        title="Funlog: Edit Travel"
+        />
+
+
 </configure>

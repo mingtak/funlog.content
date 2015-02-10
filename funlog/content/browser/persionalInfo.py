@@ -57,9 +57,10 @@ class SetPersionalInfo(BrowserView):
         portal = api.portal.get()
         user = api.user.get_current()
 
-        httpValue = getattr(request, 'persional-homepage', '')[0:7]
-        httpsValue = getattr(request, 'persional-homepage', '')[0:8]
-        if httpValue != "http://" and httpsValue != "https://":
+        homepage = getattr(request, 'persional-homepage', '')
+        httpValue = homepage[0:7]
+        httpsValue = homepage[0:8]
+        if httpValue != "http://" and httpsValue != "https://" and homepage !="" and homepage is not None:
             api.portal.show_message(message=_(u"Error url format, must be include 'http://' or 'https://'"), request=request, type='error')
             self.callBackUrl(portal, response)
             return
@@ -95,9 +96,11 @@ class SetBlogInfo(BrowserView):
         request = self.request
         response = request.response
         portal = api.portal.get()
+        blogRoot = portal['blog']
         user = api.user.get_current()
 
         beforeValue = safe_unicode(user.getProperty('blogId'))
+        blogFolder = blogRoot[beforeValue]
         afterValue = safe_unicode(getattr(request, 'blog-id', ''))
         if not afterValue.encode('utf-8').isalnum():
             api.portal.show_message(message=_('Error blog id format, only use A-Z, a-z, 0-9.'), request=request, type='error')
@@ -105,20 +108,26 @@ class SetBlogInfo(BrowserView):
             return
         if beforeValue != afterValue:
             with api.env.adopt_roles(['Manager']):
-                folder = api.content.rename(obj=portal[beforeValue], new_id=afterValue.encode('utf-8'))
-                folder.reindexObject(idxs=["id"])
+                api.content.rename(obj=blogFolder, new_id=afterValue.encode('utf-8'))
+                blogFolder.reindexObject(idxs=["id"])
             self.setMemberProperty(user, 'blogId', beforeValue, afterValue)
 
         beforeValue = safe_unicode(user.getProperty('blogName'))
         afterValue = safe_unicode(getattr(request, 'blog-name', ''))
+        if beforeValue != afterValue:
+                blogFolder.title = afterValue
+                blogFolder.reindexObject(idxs=["Title"])
         self.setMemberProperty(user, 'blogName', beforeValue, afterValue)
 
-        beforeValue = safe_unicode(user.getProperty('blogOnOff'))
-        afterValue = safe_unicode(getattr(request, 'blog-on-off', True))
+        beforeValue = user.getProperty('blogOnOff')
+        afterValue = getattr(request, 'blog-on-off', True)
         self.setMemberProperty(user, 'blogOnOff', beforeValue, afterValue)
 
         beforeValue = safe_unicode(user.getProperty('blogDescription'))
         afterValue = safe_unicode(getattr(request, 'blog-description', ''))
+        if beforeValue != afterValue:
+                blogFolder.description = afterValue
+                blogFolder.reindexObject(idxs=["Description"])
         self.setMemberProperty(user, 'blogDescription', beforeValue, afterValue)
 
         self.callBackUrl(portal, response)

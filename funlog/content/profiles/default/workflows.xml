@@ -24,6 +24,9 @@
   <type type_id="funlog.content.travel">
    <bound-workflow workflow_id="funlog_publication_workflow_private"/>
   </type>
+  <type type_id="funlog.content.profile">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
 
  </bindings>
 </object>

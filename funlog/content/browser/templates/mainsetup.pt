@@ -22,6 +22,9 @@
   <li>
     <a tal:attributes="href string:${portal_url}/site/blog-setup" i18n:translate="">Blog setup</a>
   </li>
+  <li>
+    <a tal:attributes="href string:${portal_url}/content_manager">Content manager</a>
+  </li>
 </ul>
 
 

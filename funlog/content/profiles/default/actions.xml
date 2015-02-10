@@ -28,6 +28,7 @@
    <property name="visible">True</property>
   </object>
 
+<!--
   <object name="content_manager" meta_type="CMF Action" i18n:domain="funlog.content" insert-after="my_funlog">
    <property name="title" i18n:translate="">Content Manager</property>
    <property name="description" i18n:translate="">Blog Manager</property>
@@ -39,6 +40,7 @@
    </property>
    <property name="visible">True</property>
   </object>
+-->
 
   <object name="preferences" meta_type="CMF Action" i18n:domain="plone">
    <property name="title" i18n:translate="">Preferences</property>

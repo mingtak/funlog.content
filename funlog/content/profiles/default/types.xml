@@ -8,6 +8,7 @@
   -->
 <object name="portal_types" meta_type="Plone Types Tool">
   <!-- -*- extra stuff goes here -*- -->
+  <object name="funlog.content.profile" meta_type="Dexterity FTI" />
   <object name="funlog.content.sitefolder" meta_type="Dexterity FTI" />
   <object name="funlog.content.travel" meta_type="Dexterity FTI" />
   <object name="funlog.content.article" meta_type="Dexterity FTI" />

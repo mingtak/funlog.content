@@ -60,5 +60,5 @@ class SampleView(grok.View):
 
     grok.context(IArticle)
     grok.require('zope2.View')
-#    grok.name('view')
+    grok.name('view')
     # Add view methods here

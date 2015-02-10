@@ -38,12 +38,14 @@ class ITravel(form.Schema, IImageScaleTraversable):
         required=False,
     )
 
+    dexterity.write_permission(leadImage='funlog.editTravel')
     leadImage = NamedBlobImage(
         title=_(u"Lead Image"),
         description=_(u"Will show in blog's article list page"),
         required=False,
     )
 
+    dexterity.write_permission(location='funlog.editTravel')
     location = schema.TextLine(
         title=_(u"Location"),
         description=_(u"help_location", default="""
@@ -53,6 +55,7 @@ class ITravel(form.Schema, IImageScaleTraversable):
         required=True,
     )
 
+    dexterity.write_permission(text='funlog.editTravel')
     dexteritytextindexer.searchable('text')
     text = RichText(
         title=_(u"Text"),
@@ -69,5 +72,5 @@ class SampleView(grok.View):
 
     grok.context(ITravel)
     grok.require('zope2.View')
-    # grok.name('view')
-    # Add view methods here
+    grok.name('view')
+    #Add view methods here

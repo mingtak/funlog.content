@@ -17,4 +17,3 @@ class MainSetup(BrowserView):
         user = api.user.get_current()
 
         return self.template()
-
