@@ -6,6 +6,30 @@
 
   <browser:page
     for="*"
+    name="isAnonymous"
+    permission="zope2.View"
+    class=".followList.IsAnonymous" />
+
+  <browser:page
+    for="*"
+    name="getFollowMe"
+    permission="zope2.View"
+    class=".followList.GetFollowMe" />
+
+  <browser:page
+    for="*"
+    name="joinFollowList"
+    permission="funlog.isMember"
+    class=".followList.JoinFollowList" />
+
+  <browser:page
+    for="*"
+    name="cancelFollowList"
+    permission="funlog.isMember"
+    class=".followList.CancelFollowList" />
+
+  <browser:page
+    for="*"
     name="main_setup"
     permission="funlog.isMember"
     class=".mainsetup.MainSetup" />
@@ -34,6 +58,7 @@
     permission="funlog.isMember"
     class=".contentmanager.UpdateJquery" />
 
+<!--
   <browser:page
     for="*"
     name="persional_info"
@@ -51,6 +76,6 @@
     name="set_blog_info"
     permission="funlog.isMember"
     class=".persionalInfo.SetBlogInfo" />
-
+-->
 
 </configure>

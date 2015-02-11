@@ -16,54 +16,42 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.formwidget.contenttree import ObjPathSourceBinder
 
-from plone.app.contenttypes.interfaces import IImage
-from collective import dexteritytextindexer
-from plone.indexer import indexer
 
 from funlog.content import MessageFactory as _
 
 
 # Interface class; used to define content-type schema.
 
-class IAlbum(form.Schema, IImageScaleTraversable):
+class ITheme(form.Schema, IImageScaleTraversable):
     """
-    Album folder
+    Theme content type
     """
-    dexteritytextindexer.searchable('title')
     title = schema.TextLine(
-        title=_("Title for album"),
+        title=_(u"Theme id"),
         required=True,
     )
 
-    dexteritytextindexer.searchable('description')
     description = schema.Text(
-        title=_("Description for album"),
+        title=_(u"Theme description"),
         required=False,
     )
 
+    leadImage = NamedBlobImage(
+        title=_("Theme image"),
+        required=True,
+    )
 
-class Album(Container):
-    grok.implements(IAlbum)
+
+class Theme(Container):
+    grok.implements(ITheme)
 
 
 class SampleView(grok.View):
     """ sample view class """
 
-    grok.context(IAlbum)
+    grok.context(ITheme)
     grok.require('zope2.View')
-    grok.name('view')
+
+    # grok.name('view')
+
     # Add view methods here
-
-
-# creat index and catalog for image
-
-@indexer(IImage)
-def aspectRatio_indexer(obj):
-    width, height = obj.image.getImageSize()
-    return float(width)/float(height)
-grok.global_adapter(aspectRatio_indexer, name='aspectRatio')
-
-@indexer(IImage)
-def imageSize_indexer(obj):
-    return obj.image.getSize()
-grok.global_adapter(imageSize_indexer, name='imageSize')

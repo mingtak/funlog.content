@@ -28,6 +28,19 @@
    <property name="visible">True</property>
   </object>
 
+  <object name="content_manager" meta_type="CMF Action" i18n:domain="funlog.content" insert-after="my_funlog">
+   <property name="title" i18n:translate="">Content Manager</property>
+   <property name="description" i18n:translate="">Content Manager</property>
+   <property name="url_expr">string:${portal_url}/content_manager</property>
+   <property name="icon_expr"></property>
+   <property name="available_expr"></property>
+   <property name="permissions">
+    <element value="Funlog: Is Member"/>
+   </property>
+   <property name="visible">True</property>
+  </object>
+
+
 <!--
   <object name="content_manager" meta_type="CMF Action" i18n:domain="funlog.content" insert-after="my_funlog">
    <property name="title" i18n:translate="">Content Manager</property>

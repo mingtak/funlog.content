@@ -11,6 +11,8 @@ from plone.app.contenttypes.interfaces import IFolder, IImage, IDocument
 from funlog.content.album import IAlbum
 from funlog.content.article import IArticle
 from funlog.content.travel import ITravel
+from funlog.content.profile import IProfile
+from funlog.content.theme import ITheme
 
 
 @grok.subscribe(ITravel, IObjectAddedEvent)
@@ -37,6 +39,8 @@ def transitionState(item, event):
 @grok.subscribe(IAlbum, IObjectCreatedEvent)
 @grok.subscribe(IArticle, IObjectCreatedEvent)
 @grok.subscribe(ITravel, IObjectCreatedEvent)
+@grok.subscribe(IProfile, IObjectCreatedEvent)
+@grok.subscribe(ITheme, IObjectCreatedEvent)
 def excludeFromNav_True(item, event):
     item.exclude_from_nav = True
 
@@ -53,18 +57,16 @@ def checkRoles(event):
     user = api.user.get(userid=userId)
     userRoles = user.getRoles()
     username = safe_unicode(user.getProperty('fullname'))
-#    folderPath = "/%s" % userId
-#    folder = api.content.get(path=folderPath)
 
     if hasattr(blogRoot, userId):
         return
 
     with api.env.adopt_roles(['Manager']):
-        api.content.create(container=blogRoot, type="Folder", id=userId, title=username)
-        api.content.create(container=profileRoot, type="funlog.content.profile", id=userId, title=username)
-        user.setMemberProperties(mapping={'blogId':userId})
-#        api.content.transition(obj=folder, transition='publish')
-#        folder.reindexObject(idxs=["review_state"])
+        funlog = api.content.create(container=blogRoot, type="Folder", id=userId, title=username)
+        profile = api.content.create(container=profileRoot, type="funlog.content.profile", id=userId, title=username)
+        profile.blogId = userId
+        profile.blogName = username
+        profile.reindexObject(idxs=["blogId", "blogName"])
 
 
 @grok.subscribe(IAlbum, IObjectAddedEvent)
@@ -78,15 +80,30 @@ def moveContentToTop(obj, event):
    if folder != None:
        folder.moveObjectsToTop(obj.id)
 
-
+@grok.subscribe(IProfile, IObjectModifiedEvent)
 @grok.subscribe(IFolder, IObjectModifiedEvent)
 def syncBolgTitle_Description(obj, event):
-    user = api.user.get(userid=obj.getOwner().getId())
-    blogName = safe_unicode(user.getProperty('blogName', ''))
-    blogDescription = safe_unicode(user.getProperty('blogDescription', ''))
+    userId = obj.getOwner().getId()
+    catalog = obj.portal_catalog
+    if obj.Type() == "Profile":
+       otherObj = catalog({"Creator":userId, "Type":"Folder"})[0].getObject()
+       objId, objTitle, objDescription = obj.blogId, obj.blogName, obj.blogDescription
+       otherObjId, otherObjTitle, otherObjDescription = otherObj.id, otherObj.title, otherObj.description
+       if objId != otherObjId:
+           with api.env.adopt_roles(['Manager']):
+                api.content.rename(obj=otherObj, new_id=str(objId))
+       if objTitle != otherObjTitle:
+           otherObj.title = objTitle
+       if objDescription != otherObjDescription:
+           otherObj.description = objDescription
+       otherObj.reindexObject(idxs=["id", "title", "description"])
 
-    if obj.title != blogName:
-        user.setMemberProperties(mapping={'blogName': obj.title})
-
-    if obj.description != blogDescription:
-        user.setMemberProperties(mapping={'blogDescription': obj.description})
+    if obj.Type() == "Folder":
+       otherObj = catalog({"Creator":userId, "Type":"Profile"})[0].getObject()
+       objTitle, objDescription = obj.title, obj.description
+       otherObjTitle, otherObjDescription = otherObj.blogName, otherObj.blogDescription
+       if objTitle != otherObjTitle:
+           otherObj.blogName = objTitle
+       if objDescription != otherObjDescription:
+           otherObj.blogDescription = objDescription
+       otherObj.reindexObject(idxs=["blogName", "blogDescription"])

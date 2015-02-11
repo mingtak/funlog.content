@@ -16,6 +16,7 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.formwidget.contenttree import ObjPathSourceBinder
 from collective import dexteritytextindexer
+from plone.indexer import indexer
 
 from funlog.content import MessageFactory as _
 
@@ -26,12 +27,13 @@ class ITravel(form.Schema, IImageScaleTraversable):
     """
     Travel Note
     """
-
+    dexteritytextindexer.searchable('title')
     title = schema.TextLine(
         title=_(u"Title for travel"),
         required=True,
     )
 
+    dexteritytextindexer.searchable('description')
     description = schema.Text(
         title=_(u"Description for travel"),
         description=_(u"Short description, if no filling, will show text head 20 words instead."),
@@ -74,3 +76,15 @@ class SampleView(grok.View):
     grok.require('zope2.View')
     grok.name('view')
     #Add view methods here
+
+
+@indexer(ITravel)
+def aspectRatio_indexer(obj):
+    width, height = obj.leadImage.getImageSize()
+    return float(width)/float(height)
+grok.global_adapter(aspectRatio_indexer, name='aspectRatio')
+
+@indexer(ITravel)
+def imageSize_indexer(obj):
+    return obj.leadImage.getSize()
+grok.global_adapter(imageSize_indexer, name='imageSize')

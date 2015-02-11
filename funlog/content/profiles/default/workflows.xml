@@ -27,6 +27,9 @@
   <type type_id="funlog.content.profile">
    <bound-workflow workflow_id="one_state_workflow"/>
   </type>
+  <type type_id="funlog.content.theme">
+   <bound-workflow workflow_id="one_state_workflow"/>
+  </type>
 
  </bindings>
 </object>

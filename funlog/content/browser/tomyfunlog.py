@@ -5,11 +5,8 @@ from plone import api
 class ToMyFunlog(BrowserView):
 
     def __call__(self):
+        catalog = self.context.portal_catalog
+        userId = api.user.get_current().getId()
+        redirectUrl = catalog({"Creator":userId, "Type":"Folder"})[0].getURL()
         response = self.request.response
-        portal = api.portal.get()
-        blogRoot = portal['blog']
-        user = api.user.get_current()
-        blogId = user.getProperty('blogId')
-        redirectUrl = blogRoot[blogId].absolute_url()
         return response.redirect(redirectUrl, lock=True)
-
