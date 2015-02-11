@@ -8,7 +8,7 @@ from zope.schema.vocabulary import SimpleVocabulary, SimpleTerm
 
 from plone.dexterity.content import Container
 from plone.directives import dexterity, form
-from plone.autoform import directives
+#from plone.autoform import directives
 from plone.app.textfield import RichText
 from plone.namedfile.field import NamedImage, NamedFile
 from plone.namedfile.field import NamedBlobImage, NamedBlobFile

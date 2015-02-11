@@ -88,3 +88,13 @@ grok.global_adapter(aspectRatio_indexer, name='aspectRatio')
 def imageSize_indexer(obj):
     return obj.leadImage.getSize()
 grok.global_adapter(imageSize_indexer, name='imageSize')
+
+@indexer(ITravel)
+def likeItList_indexer(obj):
+    return obj.likeItList         
+grok.global_adapter(likeItList_indexer, name='likeItList')
+
+@indexer(ITravel)
+def likeItCount_indexer(obj):
+    return len(obj.likeItList)
+grok.global_adapter(likeItCount_indexer, name='likeItCount')

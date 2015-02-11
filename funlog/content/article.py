@@ -77,3 +77,13 @@ def imageSize_indexer(obj):
     return obj.leadImage.getSize()
 grok.global_adapter(imageSize_indexer, name='imageSize')
 
+@indexer(IArticle)
+def likeItList_indexer(obj):
+    return obj.likeItList
+grok.global_adapter(likeItList_indexer, name='likeItList')
+
+@indexer(IArticle)
+def likeItCount_indexer(obj):
+    return len(obj.likeItList)
+grok.global_adapter(likeItCount_indexer, name='likeItCount')
+

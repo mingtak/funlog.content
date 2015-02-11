@@ -35,6 +35,15 @@
       />
 
   <!-- -*- extra stuff goes here -*- -->
+
+    <plone:behavior
+        title="LikeIt"
+        description="like it function for every content."
+        provides=".likeit.ILikeIt"
+        factory=".likeit.LikeIt"
+        for="plone.dexterity.interfaces.IDexterityContent"
+        />
+
   <include file="permissions.zcml" />
   <include package=".browser" />
   <include package=".eventshandle" />

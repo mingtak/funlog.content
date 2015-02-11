@@ -16,4 +16,14 @@
     </index>
     <column value="followList"/>
 
+    <index name="likeItList" meta_type="KeywordIndex">
+        <indexed_attr value="likeItList"/>
+    </index>
+    <column value="likeItList"/>
+
+    <index name="likeItCount" meta_type="FieldIndex">
+        <indexed_attr value="likeItCount"/>
+    </index>
+    <column value="likeItCount"/>
+
 </object>
