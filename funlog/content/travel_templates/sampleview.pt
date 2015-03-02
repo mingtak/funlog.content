@@ -15,7 +15,6 @@
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
 
-
     <h2 tal:content="context/title" />
 
     <div tal:content="context/description" />
@@ -29,9 +28,11 @@
 
     <ul>
       <tal:repeat repeat="item context/@@folderListing">
-        <li tal:define="obj item/getObject">
-          <img tal:replace="structure obj/@@images/image/mini"
+        <li>
+          <img tal:attributes="src string:${item/getURL}/@@images/image/mini"
+               tal:condition="exists:item/image"
                tal:on-error="string:Error image" />
+
         </li>
       </tal:repeat>
     </ul>

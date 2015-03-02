@@ -22,8 +22,9 @@
 
     <ul>
       <tal:repeat repeat="item context/@@folderListing">
-        <li tal:define="obj item/getObject">
-          <img tal:replace="structure obj/@@images/image/mini"
+        <li>
+          <img tal:attributes="src string:${item/getURL}/@@images/image/mini"
+               tal:condition="exists:item/image"
                tal:on-error="string:Error image" />
         </li>
       </tal:repeat>

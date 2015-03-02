@@ -16,6 +16,10 @@ from plone.namedfile.interfaces import IImageScaleTraversable
 from z3c.relationfield.schema import RelationList, RelationChoice
 from plone.formwidget.contenttree import ObjPathSourceBinder
 
+# for add/edit form
+from plone.dexterity.browser.add import DefaultAddForm, DefaultAddView
+from plone.dexterity.browser.edit import DefaultEditForm, DefaultEditView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
 from funlog.content import MessageFactory as _
 
@@ -26,6 +30,22 @@ class ISiteFolder(form.Schema, IImageScaleTraversable):
     """
     Folder for Manager and Administrator
     """
+
+
+class AddForm(DefaultAddForm):
+    template = ViewPageTemplateFile('template/addForm.pt')
+
+
+class AddView(DefaultAddView):
+    form = AddForm
+
+
+class EditForm(DefaultEditForm):
+    template = ViewPageTemplateFile('template/editForm.pt')
+
+
+class EditView(DefaultEditView):
+    form = EditForm
 
 
 class SiteFolder(Container):

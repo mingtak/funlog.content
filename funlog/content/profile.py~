@@ -23,11 +23,6 @@ from plone import api
 from collective import dexteritytextindexer
 from plone.indexer import indexer
 
-# for add/edit form
-from plone.dexterity.browser.add import DefaultAddForm, DefaultAddView
-from plone.dexterity.browser.edit import DefaultEditForm, DefaultEditView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-
 from funlog.content import MessageFactory as _
 
 
@@ -83,19 +78,11 @@ class IProfile(form.Schema, IImageScaleTraversable):
         required=False,
     )
 
-#    form.omitted('imageQuota')
-    imageQuota = schema.Int(
-        title=_(u"Image quota"),
-        description=_(u"500MB limited"),
-        default=0,
-        required=False,
-    )
-
     # Fieldset for funlog setup
     form.fieldset(
         'funlogSetup',
         label=_(u"Funlog setup"),
-        fields=['blogId', 'blogName', 'blogDescription', 'blogTheme', 'metaCode',]
+        fields=['blogId', 'blogName', 'blogDescription', 'blogTheme']
     )
 
     blogId = schema.TextLine(
@@ -119,13 +106,6 @@ class IProfile(form.Schema, IImageScaleTraversable):
         required=True,
     )
 
-    metaCode = schema.Text(
-        title=_(u'label_metaCode', default=u'Meta code'),
-        description=_(u"Meta code, only start at 'meta' tag, per line one record "),
-        required=False,
-    )
-
-#    form.omitted('blogTheme')
     blogTheme = schema.TextLine(
         title=_(u'label_Theme', default=u'Blog theme.'),
         description=_(u'Funlog switch theme'),
@@ -140,26 +120,31 @@ class IProfile(form.Schema, IImageScaleTraversable):
         description=_(u"You can upload up to five photos, Width: Height suggestions about 3: 2"),
     )
 
+    form.mode(coverImage_1="hidden")
     coverImage_1 = NamedBlobImage(
         title=_(u"Cover image 1"),
         required=False,
     )
 
+    form.mode(coverImage_2="display")
     coverImage_2 = NamedBlobImage(
         title=_(u"Cover image 2"),
         required=False,
     )
 
+    form.mode(coverImage_3="input")
     coverImage_3 = NamedBlobImage(
         title=_(u"Cover image 3"),
         required=False,
     )
 
+    form.omitted("coverImage_4")
     coverImage_4 = NamedBlobImage(
         title=_(u"Cover image 4"),
         required=False,
     )
 
+    form.order_after(coverImage_5='IBasic.description')
     coverImage_5 = NamedBlobImage(
         title=_(u"Cover image 5"),
         required=False,
@@ -223,49 +208,6 @@ class IProfile(form.Schema, IImageScaleTraversable):
         required=False,
     )
 
-    # Fieldset for funlog cover image
-    form.fieldset(
-        'Agree banner',
-        label=_(u"Agree banner function"),
-        fields=['agreeBanner', 'adScript'],
-        description=_(u"check agreeBanner to enable you banner ad"),
-    )
-
-    agreeBanner = schema.Bool(
-        title=_(u"Agree banner"),
-        description=_(u"To agree banner faction, check it."),
-        default=False,
-        required=False,
-    )
-
-    adScript = schema.Text(
-        title=_(u"Ad Script"),
-        description=_(u"To fill Ad script code"),
-        required=False,
-    )
-
-#    form.omitted('fbLongToken')
-    fbLongTermToken = schema.TextLine(
-        title=_(u"Facebook long term token"),
-        required=False,
-    )
-
-
-class AddForm(DefaultAddForm):
-    template = ViewPageTemplateFile('template/addForm.pt')
-
-
-class AddView(DefaultAddView):
-    form = AddForm
-
-
-class EditForm(DefaultEditForm):
-    template = ViewPageTemplateFile('template/editForm.pt')
-
-
-class EditView(DefaultEditView):
-    form = EditForm
-
 
 class Profile(Container):
     grok.implements(IProfile)
@@ -297,63 +239,3 @@ grok.global_adapter(imageSize_indexer, name='imageSize')
 def followList_indexer(obj):
     return obj.followList
 grok.global_adapter(followList_indexer, name='followList')
-
-@indexer(IProfile)
-def agreeBanner_indexer(obj):
-    return obj.agreeBanner
-grok.global_adapter(agreeBanner_indexer, name='agreeBanner')
-
-@indexer(IProfile)
-def adScript_indexer(obj):
-    return obj.adScript
-grok.global_adapter(adScript_indexer, name='adScript')
-
-@indexer(IProfile)
-def blogName_indexer(obj):
-    return obj.blogName
-grok.global_adapter(blogName_indexer, name='blogName')
-
-@indexer(IProfile)
-def blogDescription_indexer(obj):
-    return obj.blogDescription
-grok.global_adapter(blogDescription_indexer, name='blogDescription')
-
-@indexer(IProfile)
-def blogTheme_indexer(obj):
-    return obj.blogTheme
-grok.global_adapter(blogTheme_indexer, name='blogTheme')
-
-@indexer(IProfile)
-def imageQutoa_indexer(obj):
-    return obj.imageQutoa
-grok.global_adapter(imageQutoa_indexer, name='imageQutoa')
-
-@indexer(IProfile)
-def email_indexer(obj):
-    return obj.email
-grok.global_adapter(email_indexer, name='email')
-
-@indexer(IProfile)
-def webPage_indexer(obj):
-    return obj.webPage
-grok.global_adapter(webPage_indexer, name='webPage')
-
-@indexer(IProfile)
-def fbUrl_indexer(obj):
-    return obj.fbUrl
-grok.global_adapter(fbUrl_indexer, name='fbUrl')
-
-@indexer(IProfile)
-def gPlusUrl_indexer(obj):
-    return obj.gPlusUrl
-grok.global_adapter(gPlusUrl_indexer, name='gPlusUrl')
-
-@indexer(IProfile)
-def linkedInUrl_indexer(obj):
-    return obj.linkedInUrl
-grok.global_adapter(linkedInUrl_indexer, name='linkedInUrl')
-
-@indexer(IProfile)
-def twitterUrl_indexer(obj):
-    return obj.twitterUrl
-grok.global_adapter(twitterUrl_indexer, name='twitterUrl')

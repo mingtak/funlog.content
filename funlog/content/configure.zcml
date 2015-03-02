@@ -48,4 +48,48 @@
   <include package=".browser" />
   <include package=".eventshandle" />
 
+  <include package="z3c.jbot" file="meta.zcml" />
+    <browser:jbot
+      directory="jbot_templates" />
+
+
+<!-- add/edit form START -->
+
+  <!-- folder -->
+  <adapter
+      for="Products.CMFCore.interfaces.IFolderish
+           Products.CMFDefault.interfaces.ICMFDefaultSkin
+           plone.dexterity.interfaces.IDexterityFTI"
+      provides="zope.publisher.interfaces.browser.IBrowserPage"
+      factory=".sitefolder.AddView"
+      name="Folder"
+      />
+  <browser:page
+      for="plone.app.contenttypes.interfaces.IFolder"
+      name="edit"
+      permission="cmf.ModifyPortalContent"
+      class=".sitefolder.EditForm"
+      />
+
+  <!-- album -->
+  <adapter
+      for="Products.CMFCore.interfaces.IFolderish
+           Products.CMFDefault.interfaces.ICMFDefaultSkin
+           plone.dexterity.interfaces.IDexterityFTI"
+      provides="zope.publisher.interfaces.browser.IBrowserPage"
+      factory=".album.AddView"
+      name="funlog.content.album"
+      />
+  <browser:page
+      for="funlog.content.album.IAlbum"
+      name="edit"
+      permission="cmf.ModifyPortalContent"
+      class=".album.EditForm"
+      />
+
+
+
+<!-- add/edit form End -->
+
+
 </configure>

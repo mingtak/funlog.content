@@ -46,7 +46,7 @@ class JoinFollowList(BrowserView):
         if api.user.is_anonymous():
             return
         catalog = self.context.portal_catalog
-        ownerId = self.context.getOwner().getId()
+        ownerId = self.context.owner_info()["id"]
         current = api.user.get_current().getId()
         profile = catalog({"Creator":current, "Type":"Profile"})[0].getObject()
         if ownerId in profile.followList:
@@ -61,7 +61,8 @@ class CancelFollowList(BrowserView):
         if api.user.is_anonymous():
             return
         catalog = self.context.portal_catalog
-        ownerId = self.context.getOwner().getId()
+#        ownerId = self.context.getOwner().getId()
+        ownerId = self.context.owner_info()["id"]
         current = api.user.get_current().getId()
         profile = catalog({"Creator":current, "Type":"Profile"})[0].getObject()
         if ownerId in profile.followList:
@@ -73,7 +74,8 @@ class GetFollowMe(BrowserView):
 
     def __call__(self):
         catalog = self.context.portal_catalog
-        ownerId = self.context.getOwner().getId()
+#        ownerId = self.context.getOwner().getId()
+        ownerId = self.context.owner_info()["id"]
         brain = catalog(followList=ownerId)
         if len(brain) == 0:
             return None

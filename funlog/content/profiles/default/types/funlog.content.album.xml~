@@ -1,32 +1,28 @@
 <?xml version="1.0"?>
-<object name="funlog.content.travel"
+<object name="funlog.content.album"
    meta_type="Dexterity FTI"
    i18n:domain="funlog.content" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
 
   <!-- Basic metadata -->
-  <property name="title" i18n:translate="">Travel</property>
+  <property name="title" i18n:translate="">Album</property>
   <property name="description"
-    i18n:translate="">Travel Note</property>
-  <property name="icon_expr">string:${portal_url}/document_icon.png</property>
-  <property name="factory">funlog.content.travel</property>
+    i18n:translate="">Album folder</property>
+  <property name="icon_expr">string:${portal_url}/folder_icon.png</property>
+  <property name="factory">funlog.content.album</property>
   <property name="global_allow">True</property>
   <property name="filter_content_types">True</property>
   <property name="allowed_content_types">
     <element value="Image" />
   </property>
-
   <property name="allow_discussion">False</property>
 
   <!-- schema and class used for content items -->
-  <property name="schema">funlog.content.travel.ITravel</property>
-  <property name="klass">funlog.content.travel.Travel</property>
+  <property name="schema">funlog.content.album.IAlbum</property>
+  <property name="klass">funlog.content.album.Album</property>
 
   <property name="behaviors">
-     <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" />
-     <element value="funlog.behavior.namedfromtimestamp.INamedFromTimeStamp" />
-     <element value="funlog.behavior.relatedprofile.IRelatedProfile" />
-     <element value="funlog.behavior.keywords.IKeywords" />
-     <element value="funlog.content.likeit.ILikeIt" />
+     <element value="funlog.behavior.behavior.INamedFromTimeStamp" />
+<!--     <element value="funlog.behavior.settitleonly.ISetTitleOnly" /> -->
 <!--     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/> -->
    </property>
 

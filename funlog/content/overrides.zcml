@@ -1,0 +1,123 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:plone="http://namespaces.plone.org/plone">
+
+     <plone:portlet
+         name="plone.portlet.collection.Collection"
+         interface="plone.portlet.collection.collection.ICollectionPortlet"
+         assignment="plone.portlet.collection.collection.Assignment"
+         view_permission="zope2.View"
+         edit_permission="cmf.ManagePortal"
+         renderer="plone.portlet.collection.collection.Renderer"
+         addview="plone.portlet.collection.collection.AddForm"
+         editview="plone.portlet.collection.collection.EditForm"
+         />
+<!-- edit_permission="plone.portlet.collection.AddCollectionPortlet" -->
+
+    <plone:portlet
+        name="portlets.Calendar"
+        interface="plone.app.portlets.portlets.calendar.ICalendarPortlet"
+        assignment="plone.app.portlets.portlets.calendar.Assignment"
+        renderer="plone.app.portlets.portlets.calendar.Renderer"
+        addview="plone.app.portlets.portlets.calendar.AddForm"
+        edit_permission="cmf.ManagePortal"
+        />
+
+    <plone:portlet
+        name="portlets.Classic"
+        interface="plone.app.portlets.portlets.classic.IClassicPortlet"
+        assignment="plone.app.portlets.portlets.classic.Assignment"
+        renderer="plone.app.portlets.portlets.classic.Renderer"
+        addview="plone.app.portlets.portlets.classic.AddForm"
+        editview="plone.app.portlets.portlets.classic.EditForm"
+        edit_permission="cmf.ManagePortal"
+        />
+
+    <plone:portlet
+        name="portlets.News"
+        interface="plone.app.portlets.portlets.news.INewsPortlet"
+        assignment="plone.app.portlets.portlets.news.Assignment"
+        renderer="plone.app.portlets.portlets.news.Renderer"
+        addview="plone.app.portlets.portlets.news.AddForm"
+        editview="plone.app.portlets.portlets.news.EditForm"
+        edit_permission="cmf.ManagePortal"
+        />
+
+    <plone:portlet
+        name="portlets.Events"
+        interface="plone.app.portlets.portlets.events.IEventsPortlet"
+        assignment="plone.app.portlets.portlets.events.Assignment"
+        renderer="plone.app.portlets.portlets.events.Renderer"
+        addview="plone.app.portlets.portlets.events.AddForm"
+        editview="plone.app.portlets.portlets.events.EditForm"
+        edit_permission="cmf.ManagePortal"
+        />
+
+    <plone:portlet
+        name="portlets.Login"
+        interface="plone.app.portlets.portlets.login.ILoginPortlet"
+        assignment="plone.app.portlets.portlets.login.Assignment"
+        renderer="plone.app.portlets.portlets.login.Renderer"
+        addview="plone.app.portlets.portlets.login.AddForm"
+        edit_permission="cmf.ManagePortal"
+        />
+
+    <plone:portlet
+        name="portlets.Navigation"
+        interface="plone.app.portlets.portlets.navigation.INavigationPortlet"
+        assignment="plone.app.portlets.portlets.navigation.Assignment"
+        renderer="plone.app.portlets.portlets.navigation.Renderer"
+        addview="plone.app.portlets.portlets.navigation.AddForm"
+        editview="plone.app.portlets.portlets.navigation.EditForm"
+        edit_permission="cmf.ManagePortal"
+        />
+
+    <plone:portlet
+        name="portlets.Recent"
+        interface="plone.app.portlets.portlets.recent.IRecentPortlet"
+        assignment="plone.app.portlets.portlets.recent.Assignment"
+        renderer="plone.app.portlets.portlets.recent.Renderer"
+        addview="plone.app.portlets.portlets.recent.AddForm"
+        editview="plone.app.portlets.portlets.recent.EditForm"
+        edit_permission="cmf.ManagePortal"
+        />
+
+    <plone:portlet
+        name="portlets.Review"
+        interface="plone.app.portlets.portlets.review.IReviewPortlet"
+        assignment="plone.app.portlets.portlets.review.Assignment"
+        renderer="plone.app.portlets.portlets.review.Renderer"
+        addview="plone.app.portlets.portlets.review.AddForm"
+        edit_permission="cmf.ManagePortal"
+        />
+
+    <plone:portlet
+        name="portlets.rss"
+        interface="plone.app.portlets.portlets.rss.IRSSPortlet"
+        assignment="plone.app.portlets.portlets.rss.Assignment"
+        renderer="plone.app.portlets.portlets.rss.Renderer"
+        addview="plone.app.portlets.portlets.rss.AddForm"
+        editview="plone.app.portlets.portlets.rss.EditForm"
+        edit_permission="cmf.ManagePortal"
+        />
+
+    <plone:portlet
+        name="portlets.Search"
+        interface="plone.app.portlets.portlets.search.ISearchPortlet"
+        assignment="plone.app.portlets.portlets.search.Assignment"
+        renderer="plone.app.portlets.portlets.search.Renderer"
+        addview="plone.app.portlets.portlets.search.AddForm"
+        editview="plone.app.portlets.portlets.search.EditForm"
+        edit_permission="cmf.ManagePortal"
+        />
+
+    <plone:portlet
+        name="portlets.Language"
+        interface="plone.app.portlets.portlets.language.ILanguagePortlet"
+        assignment="plone.app.portlets.portlets.language.Assignment"
+        renderer="plone.app.portlets.portlets.language.Renderer"
+        addview="plone.app.portlets.portlets.language.AddForm"
+        edit_permission="cmf.ManagePortal"
+        />
+
+</configure>

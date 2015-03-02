@@ -23,9 +23,7 @@
 
   <property name="behaviors">
      <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" />
-     <element value="funlog.behavior.namedfromtimestamp.INamedFromTimeStamp" />
-     <element value="funlog.behavior.relatedprofile.IRelatedProfile" />
-     <element value="funlog.behavior.keywords.IKeywords" />
+     <element value="funlog.behavior.behavior.INamedFromTimeStamp" />
      <element value="funlog.content.likeit.ILikeIt" />
 <!--     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/> -->
    </property>

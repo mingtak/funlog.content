@@ -1,0 +1,58 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+
+    <metal:content-core fill-slot="content-core">
+        <metal:block define-macro="listing" extend-macro="context/folder_listing/macros/content-core">
+            <!-- we don't want the dl -->
+            <metal:entries fill-slot="entries">
+
+
+
+
+<ul>
+  <tal:repeat repeat="item context/@@folderListing">
+
+    <li>
+      <img tal:attributes="src string:${item/getURL}/@@images/leadImage/large"
+           tal:condition="exists:item/leadImage"/>
+
+<p class="created">
+<span class="year" tal:content="item/created/year" />
+<span class="month" tal:content="python:item.created.strftime('%b')" />
+<span class="day" tal:content="python:item.created.strftime('%d')" />
+</p>
+
+<p>
+  <span class="type" i18n:translate="">Type: </span>
+    <span class="type_name" tal:content="item/Type" />
+  <span class="likeit" i18n:translate="">Like it: </span>
+    <span class="likeit_count" tal:content="python:item.likeItCount if type(item.likeItCount) is type(int()) else 0" />
+  <span class="keywords" i18n:translate="">Keywords: </span>
+    <tal:keyword repeat="keyword item/Subject">
+      <a tal:attributes="class string:keyword;
+                         href string:/${context/id}?keyword=${keyword}" tal:content="keyword" />
+    </tal:keyword>
+</p>
+
+      <a class="content_href" tal:attributes="href item/getURL">
+        <span class="content_title" tal:content="item/Title" />
+      </a>
+      <p class="description" tal:content="item/Description" />
+    </li>
+  </tal:repeat>
+</ul>
+
+
+            </metal:entries>
+        </metal:block>
+    </metal:content-core>
+
+</body>
+</html>

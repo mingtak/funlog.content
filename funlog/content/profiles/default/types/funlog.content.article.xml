@@ -19,8 +19,10 @@
   <property name="klass">funlog.content.article.Article</property>
 
   <property name="behaviors">
-     <element value="plone.app.content.interfaces.INameFromTitle" />
      <element value="collective.dexteritytextindexer.behavior.IDexterityTextIndexer" />
+     <element value="funlog.behavior.namedfromtimestamp.INamedFromTimeStamp" />
+     <element value="funlog.behavior.relatedprofile.IRelatedProfile" />
+     <element value="funlog.behavior.keywords.IKeywords" />
      <element value="funlog.content.likeit.ILikeIt" />
 <!--     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/> -->
    </property>

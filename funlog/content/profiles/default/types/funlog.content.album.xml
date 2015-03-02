@@ -21,7 +21,9 @@
   <property name="klass">funlog.content.album.Album</property>
 
   <property name="behaviors">
-     <element value="plone.app.content.interfaces.INameFromTitle" />
+     <element value="funlog.behavior.namedfromtimestamp.INamedFromTimeStamp" />
+     <element value="funlog.behavior.relatedprofile.IRelatedProfile" />
+     <element value="funlog.behavior.keywords.IKeywords" />
 <!--     <element value="funlog.behavior.settitleonly.ISetTitleOnly" /> -->
 <!--     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/> -->
    </property>

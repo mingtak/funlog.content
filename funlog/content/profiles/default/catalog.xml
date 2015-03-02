@@ -4,12 +4,10 @@
     <index name="aspectRatio" meta_type="FieldIndex">
         <indexed_attr value="aspectRatio"/>
     </index>
-    <column value="aspectRatio"/>
 
     <index name="imageSize" meta_type="FieldIndex">
         <indexed_attr value="imageSize"/>
     </index>
-    <column value="imageSize"/>
 
     <index name="followList" meta_type="KeywordIndex">
         <indexed_attr value="followList"/>
@@ -19,11 +17,40 @@
     <index name="likeItList" meta_type="KeywordIndex">
         <indexed_attr value="likeItList"/>
     </index>
-    <column value="likeItList"/>
 
     <index name="likeItCount" meta_type="FieldIndex">
         <indexed_attr value="likeItCount"/>
     </index>
     <column value="likeItCount"/>
+
+    <index name="agreeBanner" meta_type="BooleanIndex">
+        <indexed_attr value="agreeBanner"/>
+    </index>
+    <column value="agreeBanner"/>
+
+    <column value="adScript"/>
+
+    <column value="blogName"/>
+
+    <column value="blogDescription"/>
+
+    <index name="blogTheme" meta_type="FieldIndex">
+        <indexed_attr value="blogTheme"/>
+    </index>
+    <column value="blogTheme"/>
+
+    <column value="email"/>
+
+    <column value="webPage"/>
+
+    <column value="fbUrl"/>
+
+    <column value="gPlusUrl"/>
+
+    <column value="linkedInUrl"/>
+
+    <column value="twitterUrl"/>
+
+    <column value="coverImage_1"/>
 
 </object>

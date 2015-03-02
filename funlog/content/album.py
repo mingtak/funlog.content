@@ -20,6 +20,11 @@ from plone.app.contenttypes.interfaces import IImage
 from collective import dexteritytextindexer
 from plone.indexer import indexer
 
+# for add/edit form
+from plone.dexterity.browser.add import DefaultAddForm, DefaultAddView
+from plone.dexterity.browser.edit import DefaultEditForm, DefaultEditView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
 from funlog.content import MessageFactory as _
 
 
@@ -40,6 +45,22 @@ class IAlbum(form.Schema, IImageScaleTraversable):
         title=_("Description for album"),
         required=False,
     )
+
+
+class AddForm(DefaultAddForm):
+    template = ViewPageTemplateFile('template/addForm.pt')
+
+
+class AddView(DefaultAddView):
+    form = AddForm
+
+
+class EditForm(DefaultEditForm):
+    template = ViewPageTemplateFile('template/editForm.pt')
+
+
+class EditView(DefaultEditView):
+    form = EditForm
 
 
 class Album(Container):
@@ -67,3 +88,9 @@ grok.global_adapter(aspectRatio_indexer, name='aspectRatio')
 def imageSize_indexer(obj):
     return obj.image.getSize()
 grok.global_adapter(imageSize_indexer, name='imageSize')
+
+@indexer(IAlbum)
+def keywords_indexer(obj):
+    keywords = obj.keywords
+    return keywords.replace(' ', '').split(',')
+grok.global_adapter(keywords_indexer, name='Subject')

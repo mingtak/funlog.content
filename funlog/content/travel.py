@@ -18,6 +18,11 @@ from plone.formwidget.contenttree import ObjPathSourceBinder
 from collective import dexteritytextindexer
 from plone.indexer import indexer
 
+# for add/edit form
+from plone.dexterity.browser.add import DefaultAddForm, DefaultAddView
+from plone.dexterity.browser.edit import DefaultEditForm, DefaultEditView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+
 from funlog.content import MessageFactory as _
 
 
@@ -65,6 +70,22 @@ class ITravel(form.Schema, IImageScaleTraversable):
     )
 
 
+class AddForm(DefaultAddForm):
+    template = ViewPageTemplateFile('template/addForm.pt')
+
+
+class AddView(DefaultAddView):
+    form = AddForm
+
+
+class EditForm(DefaultEditForm):
+    template = ViewPageTemplateFile('template/editForm.pt')
+
+
+class EditView(DefaultEditView):
+    form = EditForm
+
+
 class Travel(Container):
     grok.implements(ITravel)
 
@@ -98,3 +119,9 @@ grok.global_adapter(likeItList_indexer, name='likeItList')
 def likeItCount_indexer(obj):
     return len(obj.likeItList)
 grok.global_adapter(likeItCount_indexer, name='likeItCount')
+
+@indexer(ITravel)
+def keywords_indexer(obj):
+    keywords = obj.keywords
+    return keywords.replace(' ', '').split(',')
+grok.global_adapter(keywords_indexer, name='Subject')
