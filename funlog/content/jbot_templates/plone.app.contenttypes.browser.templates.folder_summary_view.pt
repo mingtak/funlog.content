@@ -14,11 +14,23 @@
             <metal:entries fill-slot="entries">
 
 
+<ul tal:define="catalog python:context.portal_catalog;
+                keyword python:getattr(request, 'keyword', None);
+                creator python:str(context.getOwner());
+                contentType python:getattr(request, 'type', None);
+                brainByKeyword python:None if keyword is None else
+                                      catalog({'Subject':keyword.decode('utf-8'), 'Creator':creator},
+                                              sort_on='created', sort_order='reverse');
+                brainByType python:None if contentType is None else 
+                                      catalog({'Type':contentType, 'Creator':creator},
+                                              sort_on='created', sort_order='reverse');
+                folderListing context/@@folderListing;
+                items python:folderListing if (keyword is None and contentType is None)
+                                           else (brainByType if brainByType is not None else brainByKeyword)">
 
+<h2 class="no_result" tal:condition="python:len(items)==0" i18n:translate="">No result!</h2>
 
-<ul>
-  <tal:repeat repeat="item context/@@folderListing">
-
+  <tal:repeat repeat="item items">
     <li>
       <img tal:attributes="src string:${item/getURL}/@@images/leadImage/large"
            tal:condition="exists:item/leadImage"/>

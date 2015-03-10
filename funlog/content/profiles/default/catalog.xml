@@ -8,6 +8,7 @@
     <index name="imageSize" meta_type="FieldIndex">
         <indexed_attr value="imageSize"/>
     </index>
+    <column value="imageSize"/>
 
     <index name="followList" meta_type="KeywordIndex">
         <indexed_attr value="followList"/>
@@ -29,6 +30,8 @@
     <column value="agreeBanner"/>
 
     <column value="adScript"/>
+
+    <column value="blogId" />
 
     <column value="blogName"/>
 

@@ -1,0 +1,39 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="example.conference">
+
+<body>
+
+<metal:main fill-slot="main">
+    <tal:main-macro metal:define-macro="main">
+
+
+<div id="select_theme">
+    <h1 class="documentFirstHeading">Select Theme</h1>
+
+
+
+    <form tal:attributes="action request/URL" method="post">
+<ul>
+<li tal:repeat="theme view/themeBrain">
+
+<h3 tal:content="theme/Title" />
+<img tal:attributes="src string:${theme/getURL}/@@images/leadImage/mini">
+<input type="radio" name="theme"
+       tal:define="themeId context/blogTheme"
+       tal:attributes="value theme/Title;
+                       checked python:themeId if context.blogTheme != themeId else None"><span tal:replace="theme/Title" />
+<input type="submit" value="select">
+</li>
+    </form>
+
+</div>
+    </tal:main-macro>
+</metal:main>
+
+</body>
+</html>

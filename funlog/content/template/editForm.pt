@@ -7,7 +7,7 @@
 
     <metal:block fill-slot="main">
 
-<div id="template-edit-form" style="display:none"></div>
+<div class="template-edit-form" style="display:none"></div>
 
         <div class="form" metal:define-macro="form">
 <!--            <metal:title-slot define-slot="title">

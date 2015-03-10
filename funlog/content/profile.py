@@ -38,7 +38,8 @@ def checkBlogId(value):
         raise Invalid(_(u"Wrong funlog id Format, please fill in only engilish letter or number."))
     portal = api.portal.get()
     if hasattr(portal['blog'], value) :
-        if portal['blog'][value].getOwner().getId() != api.user.get_current().getId():
+#        if portal['blog'][value].getOwner().getId() != api.user.get_current().getId():
+        if portal['blog'][value].owner_info()["id"] != api.user.get_current().getId():
             raise Invalid(_(u"Sorry! this blog id already in use."))
     return True
 
@@ -72,7 +73,7 @@ class IProfile(form.Schema, IImageScaleTraversable):
         required=False,
     )
 
-    form.omitted('followList')
+#    form.omitted('followList')
     followList = schema.List(
         title=_(u"Follow list"),
         value_type=schema.Choice(
@@ -276,8 +277,7 @@ class SampleView(grok.View):
 
     grok.context(IProfile)
     grok.require('zope2.View')
-
-    # grok.name('view')
+    grok.name('view')
 
     # Add view methods here
 
@@ -307,6 +307,11 @@ grok.global_adapter(agreeBanner_indexer, name='agreeBanner')
 def adScript_indexer(obj):
     return obj.adScript
 grok.global_adapter(adScript_indexer, name='adScript')
+
+@indexer(IProfile)
+def blogId_indexer(obj):
+    return obj.blogId
+grok.global_adapter(blogId_indexer, name='blogId')
 
 @indexer(IProfile)
 def blogName_indexer(obj):

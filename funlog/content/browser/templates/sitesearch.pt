@@ -1,0 +1,56 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="funlog.content">
+<body>
+
+<tal:comment tal:condition="nothing">
+    This is a sample view template. It will not be used for rendering the
+    content unless activated by creation of a view class with a matching name.
+</tal:comment>
+
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+
+<h2 i18n:translate="">Search result</h2>
+
+<tal:checkbrain condition="exists:view/brainByLatest">
+
+  <tal:repeat repeat="item view/brainByLatest">
+    <li>
+      <img tal:attributes="src string:${item/getURL}/@@images/leadImage/mini"
+           tal:condition="python:item.Type in ['Article', 'Travel']"/>
+
+<p class="created">
+<span class="year" tal:content="item/created/year" />
+<span class="month" tal:content="python:item.created.strftime('%b')" />
+<span class="day" tal:content="python:item.created.strftime('%d')" />
+</p>
+
+<p>
+  <span class="type" i18n:translate="">Type: </span>
+    <span class="type_name" tal:content="item/Type" />
+  <span class="likeit" i18n:translate="">Like it: </span>
+    <span class="likeit_count" tal:content="python:item.likeItCount if type(item.likeItCount) is type(int()) else 0" />
+
+</p>
+
+      <a class="content_href" tal:attributes="href item/getURL">
+        <span class="content_title" tal:content="item/Title" />
+      </a>
+      <p class="description" tal:content="item/Description" />
+    </li>
+  </tal:repeat>
+
+
+</tal:checkbrain>
+
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>

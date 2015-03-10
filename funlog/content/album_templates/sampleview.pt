@@ -20,14 +20,18 @@
 
     <div tal:content="context/description" />
 
-    <ul>
+    <ul class="album_block">
       <tal:repeat repeat="item context/@@folderListing">
         <li>
-          <img tal:attributes="src string:${item/getURL}/@@images/image/mini"
+          <img tal:attributes="src string:${item/getURL};
+                               alt item/Title"
                tal:condition="exists:item/image"
-               tal:on-error="string:Error image" />
+               tal:on-error="string:Error image"
+               style="display:none" />
+          <span tal:content="item/Description" />
         </li>
       </tal:repeat>
+<!-- display:none, 避免大流量 -->
     </ul>
 
 

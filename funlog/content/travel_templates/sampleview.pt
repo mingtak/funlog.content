@@ -15,21 +15,38 @@
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
 
-    <h2 tal:content="context/title" />
+<p class="title" tal:content="context/Title" />
+<p class="description" tal:content="context/Description" />
 
-    <div tal:content="context/description" />
+    <p class="year" tal:content="python:context.created().strftime('%Y')" />
+    <p class="month" tal:content="python:context.created().strftime('%b')" />
+    <p class="day" tal:content="python:context.created().strftime('%d')" />
 
-    <img tal:replace="structure context/@@images/leadImage/preview"
+<p>
+  <span class="likeit" i18n:translate="">Like it: </span>
+    <span class="likeit_count" tal:content="python:len(context.likeItList) if hasattr(context, 'likeItList') else 0" />
+  <span class="keywords" i18n:translate="">Keywords: </span>
+    <tal:keyword condition="python:context.keywords is not None"
+                 repeat="keyword python:context.keywords.split(',')">
+      <a tal:attributes="class string:keyword;
+                         href string:../?keyword=${keyword}" tal:content="keyword" />
+    </tal:keyword>
+</p>
+
+    <div class="text" tal:content="structure context/text/raw" />
+
+    <img tal:replace="structure context/@@images/leadImage/large"
          tal:on-error="string:Error image" />
+
+
+
 
     <div tal:content="context/location" />
 
-    <div tal:content="structure context/text/raw" />
-
-    <ul>
+    <ul class="album_block">
       <tal:repeat repeat="item context/@@folderListing">
         <li>
-          <img tal:attributes="src string:${item/getURL}/@@images/image/mini"
+          <img tal:attributes="src string:${item/getURL}"
                tal:condition="exists:item/image"
                tal:on-error="string:Error image" />
 

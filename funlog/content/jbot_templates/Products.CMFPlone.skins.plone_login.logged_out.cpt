@@ -1,0 +1,1 @@
+<meta http-equiv="refresh" tal:attributes="content string:0;;url=${context/portal_url}" />

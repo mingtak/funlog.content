@@ -14,6 +14,7 @@ class ILikeIt(model.Schema):
        Marker/Form interface for LikeIt
     """
     form.omitted('likeItList')
+#    form.mode(likeItList='hidden')
     likeItList = schema.List(
         title=_(u"Like it list"),
         value_type=schema.Choice(

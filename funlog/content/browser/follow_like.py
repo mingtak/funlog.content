@@ -1,5 +1,6 @@
 from Products.Five.browser import BrowserView
 from plone import api
+#from random import shuffle
 from DateTime import DateTime
 
 
@@ -48,11 +49,15 @@ class JoinFollowList(BrowserView):
         catalog = self.context.portal_catalog
         ownerId = self.context.owner_info()["id"]
         current = api.user.get_current().getId()
-        profile = catalog({"Creator":current, "Type":"Profile"})[0].getObject()
-        if ownerId in profile.followList:
-            return
-        profile.followList.append(ownerId)
+        profileBrain = catalog({"Creator":current, "Type":"Profile"})[0]
+        profile = profileBrain.getObject()
+        if profileBrain.followList is None:
+            profile.followList = [ownerId]
+        elif ownerId not in profileBrain.followList:
+            profile.followList.append(ownerId)
         profile.reindexObject(idxs=["followList"])
+        response = self.request.response
+        return response.redirect("./", lock=True)
 
 
 class CancelFollowList(BrowserView):
@@ -68,18 +73,19 @@ class CancelFollowList(BrowserView):
         if ownerId in profile.followList:
             profile.followList.remove(ownerId)
             profile.reindexObject(idxs=["followList"])
+        response = self.request.response
+        return response.redirect("./", lock=True)
 
 
 class GetFollowMe(BrowserView):
 
     def __call__(self):
         catalog = self.context.portal_catalog
-#        ownerId = self.context.getOwner().getId()
         ownerId = self.context.owner_info()["id"]
+#        currentId = api.user.get_current().id
         brain = catalog(followList=ownerId)
+#        self.checkInList = bool(len(catalog(followList=currentId)))
         if len(brain) == 0:
             return None
-        followList = []
-        for item in brain:
-            followList.append(item.Creator)
-        return list(set(followList))
+#        shuffle(brain)
+        return brain

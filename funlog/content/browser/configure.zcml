@@ -76,5 +76,16 @@
     permission="funlog.isMember"
     class=".contentmanager.UpdateJquery" />
 
+  <browser:page
+    for="*"
+    name="site_search"
+    permission="zope2.View"
+    class=".sitesearch.SiteSearch" />
 
+<!--  <browser:page
+    for="*"
+    name="site_search"
+    permission="funlog.isMember"
+    class=".selecttheme.SelectTheme" />
+-->
 </configure>

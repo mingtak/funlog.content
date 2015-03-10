@@ -1,0 +1,4 @@
+<tal:geturl define="parentUrl python:context.getParentNode().absolute_url()">  
+  <meta http-equiv="refresh" tal:attributes="content string:0;;url=${parentUrl}" />
+</tal:geturl>
+

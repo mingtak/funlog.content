@@ -36,13 +36,13 @@
 
   <!-- -*- extra stuff goes here -*- -->
 
-    <plone:behavior
-        title="LikeIt"
-        description="like it function for every content."
-        provides=".likeit.ILikeIt"
-        factory=".likeit.LikeIt"
-        for="plone.dexterity.interfaces.IDexterityContent"
-        />
+  <plone:behavior
+      title="LikeIt"
+      description="like it function for every content."
+      provides=".likeit.ILikeIt"
+      factory=".likeit.LikeIt"
+      for="plone.dexterity.interfaces.IDexterityContent"
+      />
 
   <include file="permissions.zcml" />
   <include package=".browser" />
@@ -87,6 +87,53 @@
       class=".album.EditForm"
       />
 
+  <!-- article -->
+  <adapter
+      for="Products.CMFCore.interfaces.IFolderish
+           Products.CMFDefault.interfaces.ICMFDefaultSkin
+           plone.dexterity.interfaces.IDexterityFTI"
+      provides="zope.publisher.interfaces.browser.IBrowserPage"
+      factory=".article.AddView"
+      name="funlog.content.article"
+      />
+  <browser:page
+      for="funlog.content.article.IArticle"
+      name="edit"
+      permission="cmf.ModifyPortalContent"
+      class=".article.EditForm"
+      />
+
+  <!-- travel -->
+  <adapter
+      for="Products.CMFCore.interfaces.IFolderish
+           Products.CMFDefault.interfaces.ICMFDefaultSkin
+           plone.dexterity.interfaces.IDexterityFTI"
+      provides="zope.publisher.interfaces.browser.IBrowserPage"
+      factory=".travel.AddView"
+      name="funlog.content.travel"
+      />
+  <browser:page
+      for="funlog.content.travel.ITravel"
+      name="edit"
+      permission="cmf.ModifyPortalContent"
+      class=".travel.EditForm"
+      />
+
+  <!-- profile -->
+  <adapter
+      for="Products.CMFCore.interfaces.IFolderish
+           Products.CMFDefault.interfaces.ICMFDefaultSkin
+           plone.dexterity.interfaces.IDexterityFTI"
+      provides="zope.publisher.interfaces.browser.IBrowserPage"
+      factory=".profile.AddView"
+      name="funlog.content.profile"
+      />
+  <browser:page
+      for="funlog.content.profile.IProfile"
+      name="edit"
+      permission="cmf.ModifyPortalContent"
+      class=".profile.EditForm"
+      />
 
 
 <!-- add/edit form End -->

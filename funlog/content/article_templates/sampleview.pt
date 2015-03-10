@@ -7,23 +7,32 @@
       i18n:domain="funlog.content">
 <body>
 
-<tal:comment tal:condition="nothing">
-    This is a sample view template. It will not be used for rendering the
-    content unless activated by creation of a view class with a matching name.
-</tal:comment>
-
 <metal:main fill-slot="content-core">
   <metal:content-core define-macro="content-core">
 
+<p class="title" tal:content="context/Title" />
+<p class="description" tal:content="context/Description" />
 
-    <h2 tal:content="context/title" />
-
-    <div tal:content="context/description" />
-
-    <img tal:replace="structure context/@@images/leadImage/preview"
+    <img tal:replace="structure context/@@images/leadImage/large"
          tal:on-error="string:Error image" />
 
-    <div tal:content="structure context/text/raw" />
+    <p class="year" tal:content="python:context.created().strftime('%Y')" />
+    <p class="month" tal:content="python:context.created().strftime('%b')" />
+    <p class="day" tal:content="python:context.created().strftime('%d')" />
+
+<p>
+  <span class="likeit" i18n:translate="">Like it: </span>
+    <span class="likeit_count" tal:content="python:len(context.likeItList) if hasattr(context, 'likeItList') else 0" />
+  <span class="keywords" i18n:translate="">Keywords: </span>
+      <tal:keyword condition="python:context.keywords is not None"
+                 repeat="keyword python:context.keywords.split(',')">
+      <a tal:attributes="class string:keyword;
+                         href string:../?keyword=${keyword}" tal:content="keyword" />
+    </tal:keyword>
+</p>
+
+
+    <div class="text" tal:content="structure context/text/raw" />
 
 
 
