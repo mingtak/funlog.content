@@ -19,8 +19,9 @@
   <property name="klass">funlog.content.theme.Theme</property>
 
   <property name="behaviors">
+    <element value="plone.app.content.interfaces.INameFromTitle" />
 <!--     <element value="plone.app.dexterity.behaviors.metadata.IBasic"/> -->
-     <element value="funlog.behavior.namedfromtimestamp.INamedFromTimeStamp" />
+<!--     <element value="funlog.behavior.namedfromtimestamp.INamedFromTimeStamp" /> -->
    </property>
 
   <!-- View information -->

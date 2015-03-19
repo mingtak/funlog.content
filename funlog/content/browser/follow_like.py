@@ -1,4 +1,6 @@
+from five import grok
 from Products.Five.browser import BrowserView
+from zope.interface import Interface
 from plone import api
 #from random import shuffle
 from DateTime import DateTime
@@ -39,53 +41,3 @@ class SetLikeList(BrowserView):
         context.likeItList.append(currentId)
         context.reindexObject(idxs=["likeItCount", "likeItList"])
         return
-
-
-class JoinFollowList(BrowserView):
-
-    def __call__(self):
-        if api.user.is_anonymous():
-            return
-        catalog = self.context.portal_catalog
-        ownerId = self.context.owner_info()["id"]
-        current = api.user.get_current().getId()
-        profileBrain = catalog({"Creator":current, "Type":"Profile"})[0]
-        profile = profileBrain.getObject()
-        if profileBrain.followList is None:
-            profile.followList = [ownerId]
-        elif ownerId not in profileBrain.followList:
-            profile.followList.append(ownerId)
-        profile.reindexObject(idxs=["followList"])
-        response = self.request.response
-        return response.redirect("./", lock=True)
-
-
-class CancelFollowList(BrowserView):
-
-    def __call__(self):
-        if api.user.is_anonymous():
-            return
-        catalog = self.context.portal_catalog
-#        ownerId = self.context.getOwner().getId()
-        ownerId = self.context.owner_info()["id"]
-        current = api.user.get_current().getId()
-        profile = catalog({"Creator":current, "Type":"Profile"})[0].getObject()
-        if ownerId in profile.followList:
-            profile.followList.remove(ownerId)
-            profile.reindexObject(idxs=["followList"])
-        response = self.request.response
-        return response.redirect("./", lock=True)
-
-
-class GetFollowMe(BrowserView):
-
-    def __call__(self):
-        catalog = self.context.portal_catalog
-        ownerId = self.context.owner_info()["id"]
-#        currentId = api.user.get_current().id
-        brain = catalog(followList=ownerId)
-#        self.checkInList = bool(len(catalog(followList=currentId)))
-        if len(brain) == 0:
-            return None
-#        shuffle(brain)
-        return brain

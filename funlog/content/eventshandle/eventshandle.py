@@ -136,8 +136,8 @@ def moveContentToTop(obj, event):
 def setRelatedProfile(obj, event):
     """ Set related profile """
     userId = obj.owner_info()['id']
-    if userId == "admin":
-      return
+    if 'Manager' in api.user.get_roles(username=userId):
+        return
     catalog = obj.portal_catalog
     profile = catalog({"Type":"Profile", "Creator":userId})[0].getObject()
     intIds = component.getUtility(IIntIds)

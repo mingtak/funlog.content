@@ -120,4 +120,13 @@
         edit_permission="cmf.ManagePortal"
         />
 
+
+  <!-- Folder -->
+  <browser:page
+      for="plone.app.contenttypes.interfaces.IFolder"
+      name="edit"
+      permission="cmf.ManagePortal"
+      class=".folder.EditForm"
+      />
+
 </configure>

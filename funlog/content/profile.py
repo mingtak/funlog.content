@@ -73,7 +73,7 @@ class IProfile(form.Schema, IImageScaleTraversable):
         required=False,
     )
 
-#    form.omitted('followList')
+    form.omitted('followList')
     followList = schema.List(
         title=_(u"Follow list"),
         value_type=schema.Choice(
@@ -84,7 +84,7 @@ class IProfile(form.Schema, IImageScaleTraversable):
         required=False,
     )
 
-#    form.omitted('imageQuota')
+    form.omitted('imageQuota')
     imageQuota = schema.Int(
         title=_(u"Image quota"),
         description=_(u"500MB limited"),
@@ -126,10 +126,11 @@ class IProfile(form.Schema, IImageScaleTraversable):
         required=False,
     )
 
-#    form.omitted('blogTheme')
+    form.omitted('blogTheme')
     blogTheme = schema.TextLine(
         title=_(u'label_Theme', default=u'Blog theme.'),
         description=_(u'Funlog switch theme'),
+        default=u'creatika',
         required=False,
     )
 
@@ -245,7 +246,7 @@ class IProfile(form.Schema, IImageScaleTraversable):
         required=False,
     )
 
-#    form.omitted('fbLongToken')
+    form.omitted('fbLongTermToken')
     fbLongTermToken = schema.TextLine(
         title=_(u"Facebook long term token"),
         required=False,

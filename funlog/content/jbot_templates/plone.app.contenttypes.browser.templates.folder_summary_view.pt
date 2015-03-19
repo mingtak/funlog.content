@@ -33,7 +33,7 @@
   <tal:repeat repeat="item items">
     <li>
       <img tal:attributes="src string:${item/getURL}/@@images/leadImage/large"
-           tal:condition="exists:item/leadImage"/>
+           tal:condition="exists:item/leadImage/getImageSize"/>
 
 <p class="created">
 <span class="year" tal:content="item/created/year" />

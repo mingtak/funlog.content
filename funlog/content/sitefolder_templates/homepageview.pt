@@ -1,0 +1,42 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="funlog.content">
+<body>
+
+
+<metal:main fill-slot="content-core">
+  <metal:content-core define-macro="content-core">
+
+<div id="site_homepage_view">
+
+  <h1 i18n:translate="">Welcome Funmurmur</h1>
+
+  <img tal:attributes="src string:${context/absolute_url}/@@images/leadImage" />
+
+  <p class="description" i18n:translate="">Fun murmur is a blog for fun or murmur!</p>
+
+  <a tal:condition="context/@@isAnonymous"
+     tal:attributes="href string:${context/absolute_url}/facebookLogin" i18n:translate="">Login/Join</a>
+
+  <a tal:condition="not:context/@@isAnonymous"
+     tal:attributes="href string:${context/absolute_url}/@@to_my_funlog" i18n:translate="">My funlog</a>
+
+ 
+</div>
+
+
+
+
+
+
+
+  </metal:content-core>
+</metal:main>
+
+</body>
+</html>
+

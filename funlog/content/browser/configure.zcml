@@ -28,12 +28,7 @@
     permission="funlog.isMember"
     class=".follow_like.SetLikeList" />
 
-  <browser:page
-    for="*"
-    name="getFollowMe"
-    permission="zope2.View"
-    class=".follow_like.GetFollowMe" />
-
+<!--
   <browser:page
     for="*"
     name="joinFollowList"
@@ -45,6 +40,7 @@
     name="cancelFollowList"
     permission="funlog.isMember"
     class=".follow_like.CancelFollowList" />
+-->
 
   <browser:page
     for="*"

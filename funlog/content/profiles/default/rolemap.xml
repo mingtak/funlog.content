@@ -65,6 +65,13 @@
       <role name="Contributor" />
     </permission>
 
+    <permission name="Portlets: Manage portlets" acquire="False">
+      <role name="Manager" />
+      <role name="Site Administrator" />
+      <role name="Owner" />
+    </permission>
+
+
 
   </permissions>
 </rolemap>

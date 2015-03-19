@@ -30,6 +30,10 @@ class ISiteFolder(form.Schema, IImageScaleTraversable):
     """
     Folder for Manager and Administrator
     """
+    leadImage = NamedBlobImage(
+        title=_(u"Lead image"),
+        required=False,
+    )
 
 
 class AddForm(DefaultAddForm):
@@ -52,10 +56,20 @@ class SiteFolder(Container):
     grok.implements(ISiteFolder)
 
 
-class SampleView(grok.View):
+#grok.templatedir('sitefolder_templates')
+
+
+class View(grok.View):
     """ sample view class """
 
     grok.context(ISiteFolder)
     grok.require('zope2.View')
     # grok.name('view')
     # Add view methods here
+
+
+class HomePageView(grok.View):
+
+    grok.context(ISiteFolder)
+    grok.require('zope2.View')
+    # grok.name('homepageview')

@@ -33,7 +33,7 @@
     </tal:keyword>
 </p>
 
-    <div class="text" tal:content="structure context/text/raw" />
+    <div class="text" tal:condition="exists:context/text/raw" tal:content="structure context/text/raw" />
 
     <img tal:replace="structure context/@@images/leadImage/large"
          tal:on-error="string:Error image" />
