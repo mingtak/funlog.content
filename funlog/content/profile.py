@@ -69,7 +69,7 @@ class IProfile(form.Schema, IImageScaleTraversable):
     )
 
     leadImage = NamedBlobImage(
-        title=_(u"Persional image."),
+        title=_(u"Personal image."),
         required=False,
     )
 
@@ -101,7 +101,7 @@ class IProfile(form.Schema, IImageScaleTraversable):
 
     blogId = schema.TextLine(
         title=_(u'label_blogId', default=u'Blog Id'),
-        description=_(u"this value will became a port of blog url, be careful to change, and only engilish letter or number."),
+        description=_(u"this value will became a part of blog url, be careful to change, and only engilish letter or number."),
         required=True,
         constraint=checkBlogId
     )
@@ -235,7 +235,7 @@ class IProfile(form.Schema, IImageScaleTraversable):
 
     agreeBanner = schema.Bool(
         title=_(u"Agree banner"),
-        description=_(u"To agree banner faction, check it."),
+        description=_(u"To agree banner function, check it."),
         default=False,
         required=False,
     )

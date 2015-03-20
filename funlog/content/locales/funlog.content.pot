@@ -1,0 +1,432 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2015-03-20 02:17+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: funlog.content\n"
+
+#: ./profile.py:90
+msgid "500MB limited"
+msgstr ""
+
+#: ./profile_templates/sampleview.pt:13
+msgid "About me"
+msgstr ""
+
+#: ./profile.py:244
+msgid "Ad Script"
+msgstr ""
+
+#: ./profile.py:237
+msgid "Agree banner"
+msgstr ""
+
+#: ./profile.py:231
+msgid "Agree banner function"
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.album.xml
+msgid "Album"
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.album.xml
+msgid "Album folder"
+msgstr ""
+
+#: ./browser/templates/selecttheme.pt:33
+msgid "Apply"
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.article.xml
+msgid "Article"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Blog Manager"
+msgstr ""
+
+#: ./profile_templates/sampleview.pt:26
+msgid "Blog name:"
+msgstr ""
+
+#: ./browser/templates/mainsetup.pt:23
+msgid "Blog setup"
+msgstr ""
+
+#: ./profile.py:173
+msgid "Blog switch"
+msgstr ""
+
+#: ./profile.py:193
+msgid "Contact email address"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "Content Manager"
+msgstr ""
+
+#: ./profile.py:146
+msgid "Cover image 1"
+msgstr ""
+
+#: ./profile.py:151
+msgid "Cover image 2"
+msgstr ""
+
+#: ./profile.py:156
+msgid "Cover image 3"
+msgstr ""
+
+#: ./profile.py:161
+msgid "Cover image 4"
+msgstr ""
+
+#: ./profile.py:166
+msgid "Cover image 5"
+msgstr ""
+
+#: ./album.py:45
+#: ./article.py:56
+msgid "Description for album"
+msgstr ""
+
+#: ./travel.py:43
+msgid "Description for travel"
+msgstr ""
+
+#: ./profile.py:199
+msgid "External website"
+msgstr ""
+
+#: ./profile.py:251
+msgid "Facebook long term token"
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.sitefolder.xml
+msgid "Folder for Manager and Administrator"
+msgstr ""
+
+#: ./profile.py:78
+msgid "Follow list"
+msgstr ""
+
+#: ./sitefolder_templates/homepageview.pt:20
+msgid "Fun murmur is a blog for fun or murmur!"
+msgstr ""
+
+#: ./profile.py:140
+msgid "Funlog cover image"
+msgstr ""
+
+#: ./profile.py:98
+msgid "Funlog setup"
+msgstr ""
+
+#: ./profile.py:132
+msgid "Funlog switch theme"
+msgstr ""
+
+#: ./profile.py:179
+msgid "Funlog switch turn on/off"
+msgstr ""
+
+#: ./profile.py:89
+msgid "Image quota"
+msgstr ""
+
+#: ./profile.py:67
+msgid "Introduction"
+msgstr ""
+
+#: ./profile.py:119
+msgid "Introuction for my funlog"
+msgstr ""
+
+#: ./profile.py:50
+msgid "Invalid email address."
+msgstr ""
+
+#: ./article_templates/sampleview.pt:26
+#: ./travel_templates/sampleview.pt:28
+msgid "Keywords:"
+msgstr ""
+
+#: ./profile_templates/sampleview.pt:33
+msgid "Latest publish"
+msgstr ""
+
+#: ./article.py:62
+#: ./travel.py:50
+msgid "Lead Image"
+msgstr ""
+
+#: ./sitefolder.py:34
+msgid "Lead image"
+msgstr ""
+
+#: ./likeit.py:19
+msgid "Like it list"
+msgstr ""
+
+#: ./article_templates/sampleview.pt:24
+#: ./browser/templates/sitesearch.pt:36
+#: ./travel_templates/sampleview.pt:26
+msgid "Like it:"
+msgstr ""
+
+#: ./travel.py:57
+msgid "Location"
+msgstr ""
+
+#: ./sitefolder_templates/homepageview.pt:22
+msgid "Login/Join"
+msgstr ""
+
+#: ./browser/templates/contentmanager.pt:19
+msgid "Manage Album"
+msgstr ""
+
+#: ./profile.py:125
+msgid "Meta code, only start at 'meta' tag, per line one record "
+msgstr ""
+
+#: ./profile.py:200
+msgid "Must be include 'http://' or 'https://'"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "My Funlog"
+msgstr ""
+
+#: ./profiles/default/actions.xml
+msgid "My Setup Page"
+msgstr ""
+
+#: ./sitefolder_templates/homepageview.pt:25
+msgid "My funlog"
+msgstr ""
+
+#: ./profile.py:112
+msgid "My funlog space"
+msgstr ""
+
+#: ./profile.py:61
+msgid "Name"
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.article.xml
+msgid "Normal article"
+msgstr ""
+
+#: ./profile.py:72
+msgid "Personal image."
+msgstr ""
+
+#: ./browser/templates/mainsetup.pt:20
+msgid "Personal information setup"
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.profile.xml
+msgid "Profile"
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.profile.xml
+msgid "Profile content type for funloger"
+msgstr ""
+
+#: ./browser/templates/sitesearch.pt:18
+msgid "Search result"
+msgstr ""
+
+#: ./browser/templates/selecttheme.pt:15
+msgid "Select Theme"
+msgstr ""
+
+#: ./article.py:57
+#: ./travel.py:44
+msgid "Short description, if no filling, will show text head 20 words instead."
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.sitefolder.xml
+msgid "SiteFolder"
+msgstr ""
+
+#: ./profile.py:187
+msgid "Social network"
+msgstr ""
+
+#: ./profile.py:43
+msgid "Sorry! this blog id already in use."
+msgstr ""
+
+#: ./browser/templates/contentmanager.pt:27
+msgid "State:"
+msgstr ""
+
+#: ./article.py:69
+#: ./travel.py:68
+msgid "Text"
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.theme.xml
+msgid "Theme"
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.theme.xml
+msgid "Theme content type"
+msgstr ""
+
+#: ./theme.py:39
+msgid "Theme description"
+msgstr ""
+
+#: ./theme.py:34
+msgid "Theme id"
+msgstr ""
+
+#: ./theme.py:44
+msgid "Theme image"
+msgstr ""
+
+#: ./album.py:39
+#: ./article.py:50
+msgid "Title for album"
+msgstr ""
+
+#: ./travel.py:37
+msgid "Title for travel"
+msgstr ""
+
+#: ./profile.py:238
+msgid "To agree banner function, check it."
+msgstr ""
+
+#: ./profile.py:245
+msgid "To fill Ad script code"
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.travel.xml
+msgid "Travel"
+msgstr ""
+
+#: ./profiles/default/types/funlog.content.travel.xml
+msgid "Travel Note"
+msgstr ""
+
+#: ./browser/templates/sitesearch.pt:34
+msgid "Type:"
+msgstr ""
+
+#: ./sitefolder_templates/homepageview.pt:16
+msgid "Welcome Funmurmur"
+msgstr ""
+
+#: ./article.py:63
+#: ./travel.py:51
+msgid "Will show in blog's article list page"
+msgstr ""
+
+#: ./profile.py:38
+msgid "Wrong funlog id Format, please fill in only engilish letter or number."
+msgstr ""
+
+#: ./profile.py:142
+msgid "You can upload up to five photos, Width: Height suggestions about 3: 2"
+msgstr ""
+
+#: ./profile.py:205
+msgid "Your facebook address"
+msgstr ""
+
+#: ./profile.py:211
+msgid "Your google plus address"
+msgstr ""
+
+#: ./profile.py:223
+msgid "Your linkedIn address"
+msgstr ""
+
+#: ./profile.py:217
+msgid "Your twitter address"
+msgstr ""
+
+#: ./profile.py:233
+msgid "check agreeBanner to enable you banner ad"
+msgstr ""
+
+#: ./profile.py:192
+msgid "email"
+msgstr ""
+
+#. Default: "\n            Please fill in a specific location or address,\n            such as \"Yangmingshan\" or \"Chongqing South Road, Taipei's Zhongzheng District No. 122 paragraph 1,\",\n            Do not fill in the gray zone, such as \"near by Yangmingshan\", it will not locate on google map."
+#: ./travel.py:58
+msgid "help_location"
+msgstr ""
+
+#. Default: "Blog theme."
+#: ./profile.py:131
+msgid "label_Theme"
+msgstr ""
+
+#. Default: "Blog description"
+#: ./profile.py:118
+msgid "label_blogDescription"
+msgstr ""
+
+#. Default: "Blog Id"
+#: ./profile.py:103
+msgid "label_blogId"
+msgstr ""
+
+#. Default: "Blog name"
+#: ./profile.py:111
+msgid "label_blogName"
+msgstr ""
+
+#. Default: "Blog siwtch."
+#: ./profile.py:178
+msgid "label_description"
+msgstr ""
+
+#. Default: "Meta code"
+#: ./profile.py:124
+msgid "label_metaCode"
+msgstr ""
+
+#: ./profile_templates/sampleview.pt:45
+msgid "more..."
+msgstr ""
+
+#: ./browser/contentmanager.py:39
+msgid "publish"
+msgstr ""
+
+#: ./browser/contentmanager.py:37
+msgid "retract"
+msgstr ""
+
+#: ./profile.py:104
+msgid "this value will became a part of blog url, be careful to change, and only engilish letter or number."
+msgstr ""
+
+#: ./browser/contentmanager.py:37
+msgid "throwAway"
+msgstr ""
+
+#: ./likeit.py:21
+#: ./profile.py:80
+msgid "users"
+msgstr ""
+

@@ -17,7 +17,7 @@
 
 <ul>
   <li>
-    <a tal:attributes="href string:${portal_url}/site/persional-information" i18n:translate="">Persional information setup</a>
+    <a tal:attributes="href string:${portal_url}/site/personal-information" i18n:translate="">Personal information setup</a>
   </li>
   <li>
     <a tal:attributes="href string:${portal_url}/site/blog-setup" i18n:translate="">Blog setup</a>
